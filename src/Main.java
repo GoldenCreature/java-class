@@ -1,30 +1,32 @@
+import java.util.Arrays;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args)
     {
-        Scanner scanner = new Scanner(System.in);
-        int completedCount = 0;
-        int cancelledCount = 0;
-        int salesTotal = 0;
-        for (int order = 1; order <= 5; order++) {
-            System.out.print(order + "번 주문 금액을 입력 하세요. 취소 주문은 -1: ");
-            int amount = scanner.nextInt();
-            if (amount == -1) {
-                cancelledCount++;
-                System.out.println("취소 주문은 매출 계산에서 제외합니다.");
+        String[] participants = new String[3];
+        System.out.println(participants.length);
+        System.out.println(participants[0]);
+        participants[0] = "김서윤";
+        participants[1] = "한종수";
+        System.out.println(participants[0].length());
+
+        String[] names = {"김서윤", null};
+        for (int i = 0; i < names.length; i++) {
+            if (names[i] == null) {
+                System.out.println("빈 자리");
                 continue;
             }
-            if (amount < 0) {
-                System.out.println("잘못된 금액은 처리하지 않습니다.");
-                continue;
-            }
-            completedCount++;
-            salesTotal += amount;
+            System.out.println(names[i]);
         }
 
-        System.out.println("완료 주문: " + completedCount + "건");
-        System.out.println("취소 주문: " + cancelledCount + "건");
-        System.out.println("매출 합계: " + salesTotal + "원");
-        scanner.close();
+        String searchName = "한종수";
+        boolean found = false;
+        for (String participant : participants) {
+            if (participant != null && participant.equals(searchName)) {
+                found = true;
+                break;
+            }
+        }
+        System.out.println(found);
     }
 }
